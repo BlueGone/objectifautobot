@@ -1,0 +1,8 @@
+{
+  "name": "objectifautobot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:BlueGone/objectifautobot.git",
+  "author": "Thomas Plaçais <thomas.placais@protonmail.com>",
+  "license": "MIT"
+}
