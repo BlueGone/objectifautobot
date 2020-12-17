@@ -9,4 +9,5 @@ schedule(() =>
   retrievePetitionData(petitionId)
     .then(makeStatusFromPetitionData(petitionId))
     .then(PostTweet)
+    .catch(console.error)
 )
