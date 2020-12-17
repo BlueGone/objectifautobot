@@ -6,12 +6,14 @@ export type PetitionId = `i-${number}`;
 export interface PetitionData {
   nbSignatures: number;
   maxSignatures: number;
-} 
+}
+
+export function getPetitionLink(petitionId: PetitionId): string {
+  return `https://petitions.senat.fr/initiatives/${petitionId}`;
+}
 
 export function retrievePetitionPage(petitionId: PetitionId): Promise<string> {
-  const url = `https://petitions.senat.fr/initiatives/${petitionId}`;
-  
-  return got(url)
+  return got(getPetitionLink(petitionId))
     .then(res => res.body);
 }
 
