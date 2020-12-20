@@ -3,19 +3,25 @@ import { getPetitionLink, PetitionData, PetitionId } from "./senatePetitionRetri
 
 const petitionDeadline = new Date(2021, 3, 10);
 
-export const makeStatusFromPetitionData = (id: PetitionId) => (data: PetitionData) => {
+export const makeStatusesFromPetitionData = (id: PetitionId) => (data: PetitionData): string[] => {
   const { nbSignatures, maxSignatures } = data;
 
   const progression = Math.floor(nbSignatures * 100 / maxSignatures);
+  const nbMissingSignatures = maxSignatures - nbSignatures;
 
   const nbRemainingDays = differenceInCalendarDays(petitionDeadline, Date.now())
 
-  return (
+  return [
 `
-Déjà ${nbSignatures} signatures sur les ${maxSignatures} requises, soit ${progression}%.
-Il reste ${nbRemainingDays} jours, si vous n'avez pas encore signé, il est encore temps.
+Nous avons réuni ${progression}% des signatures nécessaires pour demander la fin de la dépendance financière des personnes handicapées 
+♿
 
+Mais il manque encore ${nbMissingSignatures} signatures pour que la pétition soit présentée au Sénat, alors à vos partages
+✍️
+`,
+`
+La pétition >
 ${getPetitionLink(id)}
 `
-  );
+  ];
 }

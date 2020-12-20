@@ -16,3 +16,14 @@ const twit = new Twit({
 export function PostTweet(status: string): Promise<any> {
   return twit.post("statuses/update", { status });
 }
+
+export function PostThread(statuses: string[]): Promise<any> {
+  return statuses.reduce((acc, status) =>
+    acc.then((previousStatusIdStr: string | null) =>
+      (previousStatusIdStr
+        ? twit.post("statuses/update", { status, in_reply_to_status_id: previousStatusIdStr })
+        : twit.post("statuses/update", { status })
+      ).then((res => (res.data as { id_str: string }).id_str))
+    )
+  , Promise.resolve(null as (string | null)));
+}
