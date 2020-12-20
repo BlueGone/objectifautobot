@@ -4,7 +4,7 @@ import {
   TWITTER_CONSUMER_SECRET,
   TWITTER_ACCESS_TOKEN,
   TWITTER_ACCESS_TOKEN_SECRET,
-} from "../config.json";
+} from "./config";
 
 const twit = new Twit({
   consumer_key: TWITTER_CONSUMER_KEY,
