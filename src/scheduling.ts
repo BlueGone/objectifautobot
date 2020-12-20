@@ -9,6 +9,7 @@ export function schedule(fn: () => void) {
       cronTime,
       onTick: fn,
       start: true,
+      timeZone: 'Europe/Paris',
     });
   });
 }
