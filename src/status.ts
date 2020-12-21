@@ -31,6 +31,7 @@ Une fois l'identité confirmée, les informations personnelles sont supprimées 
 
 C'est ce qui donne autant de poids à cette pétition !
 `,
+`
 Pour signer la #pétitionAAH, tu peux utiliser ton compte d'identité numérique.
 
 ll te suffit d'avoir :
