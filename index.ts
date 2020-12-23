@@ -1,13 +1,12 @@
 import { schedule } from "./src/scheduling";
-import { retrievePetitionData } from "./src/senatePetitionRetriever";
+import { retrievePetitionPage, getDataFromPetitionPage } from "./src/petition";
 import { makeStatusesFromPetitionData } from "./src/status";
-import { PostThread } from "./src/tweetPoster";
-
-const petitionId = 'i-416';
+import { postThread } from "./src/tweet";
 
 schedule(() => 
-  retrievePetitionData(petitionId)
-    .then(makeStatusesFromPetitionData(petitionId))
-    .then(PostThread)
+  retrievePetitionPage()
+    .then(getDataFromPetitionPage)
+    .then(makeStatusesFromPetitionData)
+    .then(postThread)
     .catch(console.error)
 );

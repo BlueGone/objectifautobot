@@ -1,14 +1,15 @@
 import { differenceInCalendarDays } from "date-fns";
-import { getPetitionLink, PetitionData, PetitionId } from "./senatePetitionRetriever";
+import { PetitionData, petitionLink } from "./petition";
+import { Statuses } from "./tweet";
 
 const petitionDeadline = new Date(2021, 3, 10);
 
-export const makeStatusesFromPetitionData = (id: PetitionId) => (data: PetitionData): string[] => {
-  const { nbSignatures, maxSignatures } = data;
-
+export function makeStatusesFromPetitionData({
+  nbSignatures,
+  maxSignatures,
+}: PetitionData): Statuses {
   const progression = Math.floor(nbSignatures * 100 / maxSignatures);
   const nbMissingSignatures = maxSignatures - nbSignatures;
-
   const nbRemainingDays = differenceInCalendarDays(petitionDeadline, Date.now())
 
   return [
@@ -24,7 +25,7 @@ export const makeStatusesFromPetitionData = (id: PetitionId) => (data: PetitionD
 ✍️ Signez la pétition
 🔁 Partagez autour de vous
 
-> https://petitions.senat.fr/initiatives/i-416 <
+> ${petitionLink} <
 
 + d'infos dans mon tweet épinglé !
 `

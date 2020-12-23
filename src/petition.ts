@@ -1,26 +1,20 @@
 import got from "got";
 import cheerio from "cheerio";
 
-export type PetitionId = `i-${number}`;
-
 export interface PetitionData {
   nbSignatures: number;
   maxSignatures: number;
 }
 
-export function getPetitionLink(petitionId: PetitionId): string {
-  return `https://petitions.senat.fr/initiatives/${petitionId}`;
+export const petitionLink = "https://petitions.senat.fr/initiatives/i-416"; 
+
+export function retrievePetitionPage(): Promise<string> {
+  return got(petitionLink).then(res => res.body);
 }
 
-export function retrievePetitionPage(petitionId: PetitionId): Promise<string> {
-  return got(getPetitionLink(petitionId))
-    .then(res => res.body);
-}
-
-export async function retrievePetitionData(petitionId: PetitionId): Promise<PetitionData> {
+export function getDataFromPetitionPage(petitionPage: string): PetitionData {
   const regex = /(?<nbSignatures>\d+)\s*\/\s*(?<maxSignatures>\d+)\s*/
 
-  const petitionPage = await retrievePetitionPage(petitionId);
   const $ = cheerio.load(petitionPage);
   const signaturesContainer = $('div.progress__bar__title');
 
@@ -36,5 +30,5 @@ export async function retrievePetitionData(petitionId: PetitionId): Promise<Peti
     };
   }
 
-  throw new Error('retrievePetitionData');
+  throw new Error('getDataFromPetitionPage');
 }
