@@ -19,7 +19,7 @@ export const makeStatusesFromPetitionData = (id: PetitionId) => (data: PetitionD
 
 → Plus que ${nbMissingSignatures} signatures
 
-→ Il nous reste ${differenceInCalendarDays} jours
+→ Il nous reste ${nbRemainingDays} jours
 
 ✍️ Signez la pétition
 🔁 Partagez autour de vous
