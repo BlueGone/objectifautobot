@@ -13,34 +13,20 @@ export const makeStatusesFromPetitionData = (id: PetitionId) => (data: PetitionD
 
   return [
 `
-⚠️♿ En finir avec la dépendance financière des personnes handicapées
+⚠️♿ En finir avec la dépendance financière des personnes handicapées en couple
 
-→ ${nbMissingSignatures} signatures à récolter avant le 10 Mars pour que le Sénat étudie la pétition
+→ Objectif rempli à ${progression}%
 
-→ objectif rempli à ${progression}%
+→ Plus que ${nbMissingSignatures} signatures
 
-✍️ Chaque signature compte !
-🔁 Chaque partage aide !
+→ Il nous reste ${differenceInCalendarDays} jours
 
-↓ liens et infos juste en dessous ↓
-`,
-`
-La pétition sur le site du Sénat : ${getPetitionLink(id)}
+✍️ Signez la pétition
+🔁 Partagez autour de vous
 
-Une fois l'identité confirmée, les informations personnelles sont supprimées : cela permet juste de confirmer que chaque personne existe et ne vote qu'une fois.
+> https://petitions.senat.fr/initiatives/i-416 <
 
-C'est ce qui donne autant de poids à cette pétition !
-`,
-`
-Pour signer la #pétitionAAH, tu peux utiliser ton compte d'identité numérique.
-
-ll te suffit d'avoir :
-- une adresse mail
-- une carte d'identité
-- un téléphone portable
-
-Explications détaillées ↓
-https://twitter.com/SandroSwordfire/status/1337781483201830912
++ d'infos dans mon tweet épinglé !
 `
   ];
 }
