@@ -1,4 +1,4 @@
-import config from "../config.json";
+import config from "./config.json";
 import { env } from 'process';
 
 export const TWITTER_CONSUMER_KEY = env.TWITTER_CONSUMER_KEY || config.TWITTER_CONSUMER_KEY;

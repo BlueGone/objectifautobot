@@ -1,9 +1,14 @@
-FROM node:15.4.0
+FROM node:15.4.0 as build
 WORKDIR /app
 COPY package.json .
 RUN npm install
-COPY config.json .
-COPY index.ts .
 COPY tsconfig.json .
 COPY src src
-CMD npx ts-node index.ts
+RUN npm run build
+
+FROM node:15.4.0 as run
+WORKDIR /app
+COPY package.json .
+RUN npm install --prod
+COPY --from=build /app/dist dist
+CMD npm run start
