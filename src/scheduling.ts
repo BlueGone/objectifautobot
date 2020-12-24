@@ -2,8 +2,7 @@ import { job } from 'cron';
 
 export function schedule(fn: () => void) {
   [
-    '0 8-23 * * *',
-    '0 0-6/2 * * *',
+    '0 6-18/6 * * *',
   ].forEach((cronTime: string) => {
     job({
       cronTime,
