@@ -10,7 +10,7 @@ You can sign the petition via [https://petitions.senat.fr/initiatives/i-416](htt
 
 ### Installing a node environment
 
-You need a working node + npm environment to use this bot. This bot was developed and tested using node 15.4.0, but may probably run on different versions.
+You need a working node + npm environment to use this bot. This bot was developed and tested using node 15.5.0, but may probably run on different versions.
 
 ### Configure API credentials
 
