@@ -2,7 +2,7 @@ import { differenceInCalendarDays } from "date-fns";
 import { PetitionData, petitionLink } from "./petition";
 import { Statuses } from "./tweet";
 
-const petitionDeadline = new Date(2021, 3, 10);
+const petitionDeadline = new Date(2021, 2, 10);
 
 export function makeStatusesFromPetitionData({
   nbSignatures,
