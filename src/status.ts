@@ -23,11 +23,11 @@ export function makeStatusesFromPetitionData({
 → Il nous reste ${nbRemainingDays} jours
 
 ✍️ Signez la pétition
-🔁 Partagez autour de vous
+🔁 Partagez régulièrement
 
-> ${petitionLink} <
+> objectifautonomie.fr <
 
-+ d'infos dans mon tweet épinglé !
++ d'infos sur le site !
 `
   ];
 }
