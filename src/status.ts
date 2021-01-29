@@ -10,15 +10,19 @@ export function makeStatusesFromPetitionData({
 }: PetitionData): Statuses {
   const progression = Math.floor(nbSignatures * 100 / maxSignatures);
   const nbMissingSignatures = maxSignatures - nbSignatures;
-  const nbRemainingDays = differenceInCalendarDays(petitionDeadline, Date.now())
+  const nbRemainingDays = differenceInCalendarDays(petitionDeadline, Date.now());
+  const isCompleted = nbSignatures >= maxSignatures;
 
   return [
-`
-⚠️♿ En finir avec la dépendance financière des personnes handicapées en couple
+`⚠️♿ En finir avec la dépendance financière des personnes handicapées en couple
 
-→ Objectif rempli à ${progression}%
+→ Objectif rempli à ${progression}%${isCompleted ? ' !' : ''}
 
-→ Plus que ${nbMissingSignatures} signatures
+→ ${
+  isCompleted
+    ? `Nous en sommes à ${nbSignatures} signatures`
+    : `Plus que ${nbMissingSignatures} signatures`
+}
 
 → Il nous reste ${nbRemainingDays} jours
 
@@ -27,7 +31,6 @@ export function makeStatusesFromPetitionData({
 
 > objectifautonomie.fr <
 
-+ d'infos sur le site !
-`
++ d'infos sur le site !`
   ];
 }
